@@ -1,0 +1,66 @@
+﻿@page
+@model Zuber.Pages.dotSettingsModel
+@{
+}
+<body style="background-image:url(/Images/1.png); margin:0; padding:0; background-size: cover;background-position:center;font-family: sans-serif; color: #fff;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <form method="post" style="border: 0px solid #fff; padding: 20px; border-radius: 10px; margin-top: 8vh;-webkit-box-shadow: -1px 4px 26px 19px rgba(0,0,0,0.75);
+                -moz-box-shadow: -1px 4px 26px 19px rgba(0,0,0,0.75);
+                box-shadow: -1px 4px 26px 19px rgba(0,0,0,0.75);" class="form-container">
+                    @*<h1 style="text-align: center;">Use The Map</h1>*@
+                    @*<form method="post">*@
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="@Model.userDot.Id" />
+                        <p>Please insert coordinates of the place where you want to be picked up <br /> You can input them manually or you can <br /> <a asp-page="MapView">Use the Map</a></p>
+                        <div class="form-group">
+                            <label asp-for="@Model.userDot.Lat" class="control-label"></label>
+                            <input asp-for="@Model.userDot.Lat" class="form-control" />
+                            <span asp-validation-for="@Model.userDot.Lat" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.userDot.Long" class="control-label"></label>
+                            <input asp-for="@Model.userDot.Long" class="form-control" />
+                            <span asp-validation-for="@Model.userDot.Long" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.userDot.Time" class="control-label"></label>
+                            <input type="time" asp-for="@Model.userDot.Time" class="form-control" />
+                            <span asp-validation-for="@Model.userDot.Time" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.userDot.Description" class="control-label"></label>
+                            <input asp-for="@Model.userDot.Description" class="form-control" />
+                            <span asp-validation-for="@Model.userDot.Description" class="text-danger"></span>
+                        </div>
+                        <div class="custom-control custom-switch">
+
+                            <input type="checkbox" class="custom-control-input" id="switch" asp-for="@Model.userDot.Hidden">
+                            <label class="custom-control-label" for="switch">do you want to hide your dot?</label>
+                        </div>
+                        @if (Model.User.IsDriver)
+                        {
+                            <h3>Ride properties</h3>
+                            <div class="form-group">
+                                <label asp-for="@Model.userRide.PlacesRemaining" class="control-label"></label>
+                                <input asp-for="@Model.userRide.PlacesRemaining" class="form-control" />
+                                <span asp-validation-for="@Model.userRide.PlacesRemaining" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.userRide.CarDescription" class="control-label"></label>
+                                <input asp-for="@Model.userRide.CarDescription" class="form-control" />
+                                <span asp-validation-for="@Model.userRide.CarDescription" class="text-danger"></span>
+                            </div>
+
+                        }
+                        <div class="form-group">
+                            <input type="submit"  value="Save" asp-page-handler="Save" class="btn btn-success " />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </body>

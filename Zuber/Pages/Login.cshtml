@@ -1,0 +1,64 @@
+﻿@page
+@model Zuber.Pages.LoginModel
+@{
+}
+
+
+
+    <div class="mid">
+        <video autoplay muted loop>
+            <source class="embed-responsive" src="Video/video1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero text-center">
+            <h2 class="text-light display-4">Welcome to Zuber</h2>
+            <p class="text-light mx-auto">Sign into your account</p>
+        </div>
+
+        <div class="col-md-auto">
+            <form method="post">
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
+                                <input class="form-control" asp-for="@Model.input.Email" type="text" placeholder="E-mail" required>
+                                <span asp-validation-for="@Model.input.Email"></span>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
+                                <input class="form-control" asp-for="@Model.input.Password" type="password" placeholder=" Password" required>
+                                @*<span asp-validation-for="@Model.input.Password"></span>*@
+                                @if (Model.failedLogin)
+                                {
+                                    <span>Your login or password are incorrect</span>}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary">Login</button><br /><br />
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+

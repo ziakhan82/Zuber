@@ -1,0 +1,83 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            background-image: url(/wwwroot/Images/14.jpg);
+            background-repeat: no-repeat;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            color: #fff;
+        }
+.containerr{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 100% ;
+}
+.containerr h1{
+    color:white;
+    text-transform: uppercase;
+    display:block;
+
+}
+.text1{
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom:20px;
+    background:black;
+    position:relative;
+    animation: text 3s 1;
+}
+.text2{
+    font-size: 30px;
+    color:#6ab04c;
+}
+@@keyframes text{
+    0%{
+        color: black;
+        margin-bottom:-40px;
+}
+70%{
+    letter-spacing: 25px;
+margin-bottom:-40px;
+}}
+    </style>
+    </head>
+<body style="background-image: url(/images/36.jpg.jpeg); margin: 0; padding: 0; background-size: cover; background-position: center; font-family: sans-serif; color: #fff;">
+<main class="container" style="height: 100vh;">
+    <div class="containerr">
+        
+        @if (Model.User.IsDriver && Model.User.SignedIn)
+        {
+
+            <h1 class="text1">Yo Driver</h1>
+            <h1 class="text2">Zuber 2021</h1>
+        }
+        else
+        {
+            <h1 class="text1">Yo Passenger</h1>
+            <h1 class="text2">Zuber 2021</h1>
+
+        }
+        </div>
+    </body>
+</html>
+
+
+@*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@

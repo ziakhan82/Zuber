@@ -1,0 +1,250 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+.navbar {
+    background: #000000;
+    padding: 1rem 8rem;
+    z-index: 1000;
+   
+
+}
+
+.navbar .navbar-brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+body > header > nav > div > div > ul.navbar-nav.mx-auto.mb-2.mb-lg-0 > li:nth-child(n) > a {
+    color: #e6ab09;
+    font-size: 1.1rem;
+    padding: 0 1rem;
+   
+}
+
+body > header > nav > div > div > ul.navbar-nav.mx-auto.mb-2.mb-lg-0 > li:nth-child(n) > a:hover {
+    color: #fff;
+}
+
+
+
+
+.mid .hero {
+    position: relative;
+    
+}
+
+#input_Email {
+    text-align: center;
+}
+
+#input_Password {
+    text-align: center;
+}
+
+
+.fromm-control {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #000000 !important;
+    border-width: 0 0 1px 0 !important;
+    padding: 0px !important;
+    color: #495057;
+    height: auto;
+    border-radius: 0;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+.mid .hero h2 {
+    width: 100%;
+    font-weight: bold !important;
+    letter-spacing: 0.2px;
+    padding-top: 0.1rem;
+    
+}
+
+.mid .hero p{
+    width: 55%;
+    font-size: 1.1rem;
+    letter-spacing: 0.2px;
+    padding-bottom: 1.1rem;
+}
+.mid .hero a {
+    background: #000000;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    text-decoration: none
+}
+
+.container {
+    text-align: center;
+    position: center;
+    
+}
+
+.mid {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+
+.mid video {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+
+
+
+        /* Provide sufficient contrast against white background */
+.btn-primary {
+    background: #000000;
+    border-color: transparent;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    text-decoration: none;
+
+}
+
+.btn-primary:active {
+    background: #e6ab09;
+}
+
+.btn-primary:hover {
+        background: #e6ab09;
+    border-color: transparent;
+}
+
+
+.btn-danger {
+    background: #e75361b5 ;
+    border-color: transparent;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+    background: #ff0000;
+    border-color: transparent;
+}
+
+.btn-group-lg {
+    background: #b0b0b0;
+    border-color: transparent;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    text-decoration: none
+}
+
+    .btn-group-lg:hover {
+        background: #4a4a4a;
+        border-color: transparent;
+    }
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #e6ab09;
+    border-color: transparent;
+}
+
+.bg-light {
+    background-color: #5b4009d6 !important;
+}
+
+.bg-primary {
+    background-color: #e6ab09 !important;
+}
+
+.badge-primary {
+    background-color: #e6ab09;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+
+@keyframes text {
+    0% {
+        color: black;
+        margin-bottom: -40px;
+    }
+
+    30% {
+        letter-spacing: 25px;
+        margin-bottom:-40px;
+    }
+}

@@ -1,0 +1,133 @@
+﻿@page
+@using System.ComponentModel.Design.Serialization
+@model Zuber.Pages.MapViewModel
+@{
+    ViewData["Title"] = "MapView";
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Zuber map</title>
+    <style>
+        #map {
+            height: 700px;
+            width: 100%;
+        
+        }
+    </style>
+</head>
+<body style="background-image: url(/Images/22.jpg); background-size: cover; ">
+    @*<h1>Zuber Map demo</h1>
+        @foreach (var dot in Model.Dots)
+        {
+            <h1>@dot.Lat , @dot.Long</h1>
+        }
+        <h1 id="demo"></h1>*@
+    <div id="map"></div>
+
+
+
+
+    <script>
+
+
+        //Initiates map at 14x zoom and centers it around Zealand
+        function initMap() {
+
+
+
+            var options = {
+                zoom: 14,
+                center: { lat: 55.630649, lng: 12.078271 }
+            };
+            
+            var map = new
+                google.maps.Map(document.getElementById('map'), options);
+            var zealandMarker = new google.maps.Marker({
+                position: { lat: 55.630649, lng: 12.078271 },
+                map: map,
+                icon: { url: '/Images/m6.png', scaledSize: new google.maps.Size(70, 70) }  
+
+
+            });
+
+            var infoWindow = new google.maps.InfoWindow;
+
+            map.addListener("click", (mapsMouseEvent) => {
+                infoWindow.close();
+                infoWindow = new google.maps.InfoWindow({
+                    position: mapsMouseEvent.latLng
+                });
+                infoWindow.setContent(
+                    '<a href="dotSettings?latitude=' + mapsMouseEvent.latLng.lat() + '&longitude=' + mapsMouseEvent.latLng.lng() + '">Click me to set your dot.</a>'
+                );
+                infoWindow.open(map);
+            });
+
+            function createMarker(map, dot) {
+                if (dot.ZuberUser.Driver) {
+                    var marker = new google.maps.Marker({
+                        position: { lat: dot.Lat, lng: dot.Long },
+                        map: map,
+                        url: '/GetProfile?id=' + dot.ZuberUserID,
+                        icon: { url: '/Images/m2.png', scaledSize: new google.maps.Size(70, 70) }
+                    });
+                }
+                else {
+                    var marker = new google.maps.Marker({
+                        position: { lat: dot.Lat, lng: dot.Long },
+                        map: map,
+                        url: '/GetProfile?id=' + dot.ZuberUserID,
+                        icon: { url: '/Images/m5.png', scaledSize: new google.maps.Size(70, 70) }
+                    });
+                }
+                var mInfoWindow;
+                if (dot.ZuberUser.Driver) {
+                    mInfoWindow = new google.maps.InfoWindow({
+                        content: '<h4>' + dot.ZuberUser.Name + '</h4><p style="text-align:left">' + dot.ZuberUser.PhoneNo + '<br>' + dot.ZuberUser.Email + '<br>' + dot.Description + '</p><a href="' + marker.url + '">Click to go to profile</a>' + '</p><p style="background-color: orange">' + dot.ZuberUser.Ride.PlacesRemaining + ' places remaining <br>' + dot.ZuberUser.Ride.CarDescription + '</p>'
+                    });
+                } else {
+                    mInfoWindow = new google.maps.InfoWindow({
+                        content: '<h4>' + dot.ZuberUser.Name + '</h4><p style="text-align:left">' + dot.ZuberUser.PhoneNo + '<br>' + dot.ZuberUser.Email + '<br>' + dot.Description + '</p><a href="' + marker.url + '">Click to go to profile</a>'
+                    });
+                }
+                marker.addListener("mouseover",
+                    () => {
+
+                        mInfoWindow.open(map, marker);
+                    });
+                marker.addListener("click",
+                    () => {
+
+                        window.location.href = marker.url;
+                    });
+
+            };
+
+            //bellow this should be function that displays other markers - to be implemented
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var DotList = JSON.parse(this.responseText);
+                    DotList.forEach((item, index, arr) => {
+                        if (item.Hidden == false) {
+                            createMarker(map, arr[index]);
+                        }
+                    });
+                }
+            };
+            xmlhttp.open("GET", "/Data/Dots.json", true);
+            xmlhttp.send();
+
+
+        }
+
+    </script>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlDbHvsR_UCWhLCkzQUeDb2ojZFY-4kB4&callback=initMap&libraries=&v=weekly"
+            async></script>
+</body>
+</html>
